@@ -1,6 +1,7 @@
 name: CI
 
 on:
+  push:
   pull_request:
   merge_group:
 
@@ -28,11 +29,10 @@ jobs:
   test:
     name: Build
     runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v4
       with:
          lfs: true
     - uses: dtolnay/rust-toolchain@stable
-    - uses: Swatinem/rust-cache@v2
     - name: Build shim
-      run: |
-        cargo build
+      run: cargo build --locked

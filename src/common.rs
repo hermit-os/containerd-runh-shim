@@ -70,7 +70,9 @@ pub struct ProcessIO {
     pub uri: Option<String>,
     pub io: Option<Arc<dyn Io>>,
     pub copy: bool,
+    #[allow(dead_code)]
     pub stdout_r: Option<File>,
+    #[allow(dead_code)]
     pub stderr_r: Option<File>,
 }
 
