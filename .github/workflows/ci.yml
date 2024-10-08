@@ -27,7 +27,7 @@ jobs:
       - run: cargo fmt -- --check
 
   test:
-    name: Build
+    name: Build & Test
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -36,3 +36,9 @@ jobs:
     - uses: dtolnay/rust-toolchain@stable
     - name: Build shim
       run: cargo build --locked
+    - name: Test shim
+      run: |
+          # runc-shim::cgroup::test_add_cgroup needs root permission to set cgroup
+          mkdir -p /tmp/dummy-xdr
+          sudo -E $(command -v cargo) test
+          sudo -E $(command -v cargo) test --all-features
