@@ -42,3 +42,4 @@ jobs:
           mkdir -p /tmp/dummy-xdr
           sudo -E $(command -v cargo) test
           sudo -E $(command -v cargo) test --all-features
+          sudo -E $(command -v cargo) test -p runh --lib
