@@ -57,7 +57,7 @@ path = "src/main.rs"
 doc = false
 
 [dependencies]
-containerd-shim = { version = "0.7.4", features = ["async"] }
+containerd-shim = { version = "0.8.0", features = ["async"] }
 libc.workspace = true
 log.workspace = true
 nix = { workspace = true, features = ["socket", "uio", "term"] }
