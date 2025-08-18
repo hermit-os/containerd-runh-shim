@@ -748,9 +748,7 @@ mod tests {
             .expect("remove test dir should not be error");
         assert!(
             actual_err.to_string().contains(expectd_msg),
-            "actual error \"{}\" should contains \"{}\"",
-            actual_err,
-            expectd_msg
+            "actual error \"{actual_err}\" should contains \"{expectd_msg}\""
         );
     }
 }

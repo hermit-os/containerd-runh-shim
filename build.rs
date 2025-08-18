@@ -35,5 +35,5 @@ fn main() {
     if !output_dirty.status.success() {
         hash.push_str(".m");
     }
-    println!("cargo:rustc-env=CARGO_GIT_HASH={}", hash);
+    println!("cargo:rustc-env=CARGO_GIT_HASH={hash}");
 }

@@ -88,8 +88,8 @@ pub enum LogFormat {
 impl Display for LogFormat {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            LogFormat::Json => write!(f, "{}", JSON),
-            LogFormat::Text => write!(f, "{}", TEXT),
+            LogFormat::Json => write!(f, "{JSON}"),
+            LogFormat::Text => write!(f, "{TEXT}"),
         }
     }
 }

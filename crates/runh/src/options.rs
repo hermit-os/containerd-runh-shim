@@ -241,7 +241,7 @@ impl GlobalOpts {
 
         // --rootless true|false|auto : Enable or disable rootless mode.
         if let Some(mode) = self.rootless {
-            let arg = format!("{}={}", ROOTLESS, mode);
+            let arg = format!("{ROOTLESS}={mode}");
             args.push(arg);
         }
         Ok((command, args))

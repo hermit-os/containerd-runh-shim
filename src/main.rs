@@ -35,7 +35,7 @@ fn parse_version() {
     let flags = match parse(&os_args[1..]) {
         Ok(flags) => flags,
         Err(e) => {
-            eprintln!("Error parsing arguments: {}", e);
+            eprintln!("Error parsing arguments: {e}");
             std::process::exit(1);
         }
     };

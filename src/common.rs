@@ -94,7 +94,7 @@ pub fn create_io(
     if scheme_path.len() <= 1 {
         // no scheme specified, default schema to fifo
         scheme = FIFO_SCHEME;
-        pio.uri = Some(format!("{}://{}", scheme, stdout));
+        pio.uri = Some(format!("{scheme}://{stdout}"));
     } else {
         scheme = scheme_path[0];
         pio.uri = Some(stdout.to_string());
