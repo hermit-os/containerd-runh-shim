@@ -33,7 +33,7 @@ use tokio::{
 };
 
 pub async fn get_path_from_cgorup(pid: u32) -> Result<String> {
-    let proc_path = format!("/proc/{}/cgroup", pid);
+    let proc_path = format!("/proc/{pid}/cgroup");
     let path_string = read_to_string(&proc_path)
         .await
         .map_err(io_error!(e, "open {}.", &proc_path))?;

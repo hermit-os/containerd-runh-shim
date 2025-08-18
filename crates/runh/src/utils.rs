@@ -48,10 +48,10 @@ fn path_to_string(path: impl AsRef<Path>) -> Result<String, Error> {
         .to_str()
         .map(|v| v.to_string())
         .ok_or_else(|| {
-            let e = std::io::Error::new(
-                std::io::ErrorKind::Other,
-                format!("invalid UTF-8 string: {}", path.as_ref().to_string_lossy()),
-            );
+            let e = std::io::Error::other(format!(
+                "invalid UTF-8 string: {}",
+                path.as_ref().to_string_lossy()
+            ));
             Error::InvalidPath(e)
         })
 }

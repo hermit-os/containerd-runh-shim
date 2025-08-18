@@ -96,7 +96,7 @@ impl<F, C> TaskService<F, C> {
         containers.get_mut(id).ok_or_else(|| {
             ttrpc::Error::RpcStatus(ttrpc::get_status(
                 ttrpc::Code::NOT_FOUND,
-                format!("can not find container by id {}", id),
+                format!("can not find container by id {id}"),
             ))
         })?;
         let container = MutexGuard::map(containers, |m| m.get_mut(id).unwrap());
@@ -346,7 +346,7 @@ where
         let resources: LinuxResources = serde_json::from_slice(&data).map_err(|e| {
             ttrpc::Error::RpcStatus(ttrpc::get_status(
                 ttrpc::Code::INVALID_ARGUMENT,
-                format!("failed to parse resource spec: {}", e),
+                format!("failed to parse resource spec: {e}"),
             ))
         })?;
 
@@ -414,7 +414,7 @@ where
     async fn shutdown(&self, _ctx: &TtrpcContext, _req: ShutdownRequest) -> TtrpcResult<Empty> {
         debug!("Shutdown request");
         let containers = self.containers.lock().await;
-        if containers.len() > 0 {
+        if !containers.is_empty() {
             return Ok(Empty::new());
         }
         self.exit.signal();
